@@ -1,0 +1,10 @@
+# Ignorer les fichiers .pyc
+*.pyc
+
+# Ignorer le répertoire de virtualenv
+venv/
+
+# Ignorer le fichier manage.py
+manage.py
+# Ignorer le fichier db.sqlites3
+db.sqlite3
