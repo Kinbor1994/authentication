@@ -10,12 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+#import environ
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-env = environ.Env()
-environ.Env.read_env(env_file=str(BASE_DIR / "authentication" / ".env"))
+
 TEMPLATES_DIRS = os.path.join(BASE_DIR, "templates")
 
 
@@ -23,12 +24,12 @@ TEMPLATES_DIRS = os.path.join(BASE_DIR, "templates")
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env("SECRET_KEY")
+SECRET_KEY = "django-insecure-l65ohmds&+0411s&vw4#!+7tz(unn2p3ff1gk+tulnahr=tj4k"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool("DEBUG",False)
+DEBUG = True
 
-ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
+ALLOWED_HOSTS = ["8000-kinbor1994-authenticati-km7faypzjjb.ws-eu108.gitpod.io"]
 
 
 # Application definition
@@ -42,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'crispy_bootstrap5',
-    'authentication',
+    'accounts',
+    'blog',
 ]
 
 MIDDLEWARE = [
@@ -132,7 +134,7 @@ MEDIA_ROOT = BASE_DIR / "mediafiles"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Authentication
-AUTH_USER_MODEL = "authentication.User"
+AUTH_USER_MODEL = "accounts.User"
 AUTHENTICATION_BACKENDS=['django.contrib.auth.backends.ModelBackend']
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
